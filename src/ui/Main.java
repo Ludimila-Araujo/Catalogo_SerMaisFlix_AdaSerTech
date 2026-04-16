@@ -1,13 +1,14 @@
 package ui;
 
-import java.util.Scanner;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
-
-import service.PessoaService;
+import java.util.Scanner;
 import model.Ator;
 import model.Diretor;
+import model.Filme;
+import service.FilmeService;
+import service.PessoaService;
 
 
 public class Main{
@@ -15,6 +16,7 @@ public class Main{
 
         Scanner scanner = new Scanner(System.in);
 
+        FilmeService filmeService = new FilmeService();
         PessoaService pessoaService = new PessoaService();
 
         boolean sistemaRodando = true;
@@ -41,11 +43,28 @@ public class Main{
 
             switch(opcao){
                 case 1: {
+                    System.out.println("\n--- CADASTRAR FILME ---");
+                    System.out.print("Digite o nome do filme: ");
+                    String nome = scanner.nextLine();
 
+                    LocalDate dataLancamento = null;
+                    while (dataLancamento == null) {
+                        System.out.print("Digite a data de lançamento (dd/MM/yyyy): ");
+                        String data = scanner.nextLine();
+                        try {
+                            dataLancamento = LocalDate.parse(data, formatadorData);
+                        } catch (DateTimeParseException e) {
+                            System.out.println("Formato de data inválido! Utilize o formato dd/MM/yyyy.");
+                        }
+                    }
+                    System.out.print("Digite o orçamento do filme: ");
+                    double orcamento = scanner.nextDouble();
+                    scanner.nextLine();
 
-                    //ADICIONAR AQUI LÓGICA DE CADASTRO DE FILME
-
-
+                    System.out.print("Digite uma breve descrição do filme: ");
+                    String descricao = scanner.nextLine();
+                    Filme novoFilme = new Filme(nome, dataLancamento, orcamento, descricao);
+                    filmeService.cadastrarFilme(novoFilme);
                     break;
 
                 }
