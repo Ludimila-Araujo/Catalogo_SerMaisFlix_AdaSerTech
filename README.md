@@ -1,4 +1,8 @@
-﻿# 🎬 SerMaisFlix (Catálogo de Filmes)
+# 🎬 SerMaisFlix (Catálogo de Filmes)
+
+# Catalago_SerMaisFlix_AdaSerTech
+Projeto desenvolvido como parte do programa Ser + Tech 2026, uma parceria entre as empresas ADA e Núclea.
+
 
 > **Projeto desenvolvido como parte do programa Ser + Tech 2026, uma parceria entre as empresas ADA e Núclea.**
 
