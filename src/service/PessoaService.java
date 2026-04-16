@@ -24,4 +24,24 @@ public class PessoaService {
         System.out.println("Diretor/Diretora " + diretor.getNome() + " cadastrado(a) com sucesso!");
     }
 
+    public Ator buscarAtorPorNome(String nomeBuscado) {
+        for (Ator atorAtual : atores) {
+            if (atorAtual.getNome().equalsIgnoreCase(nomeBuscado)) {
+                return atorAtual;
+            }
+        }
+        System.out.println("⚠️ Ator/Atriz não encontrado(a) no sistema.");
+        return null;
+    }
+
+    public Diretor buscarDiretorPorNome(String nomeBuscado) {
+        for (Diretor diretorAtual : diretores) {
+            if (diretorAtual.getNome().equalsIgnoreCase(nomeBuscado)) {
+                return diretorAtual;
+            }
+        }
+        System.out.println("⚠️ Diretor(a) não encontrado(a) no sistema.");
+        return null;
+    }
+
 }

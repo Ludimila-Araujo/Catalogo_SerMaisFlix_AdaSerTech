@@ -140,23 +140,47 @@ public class Main{
                 }
 
                 case 5: {
+                    System.out.println("\n--- Central de Associações ---");
+                    System.out.print("Digite o nome do filme: ");
+                    String nomeDoFilme = scanner.nextLine();
+                    Filme filme = filmeService.buscarFilmePorNome(nomeDoFilme);
 
+                    if (filme == null) {
+                        System.out.println("Filme não encontrado!");
+                    } else {
+                        System.out.println("O que deseja associar a '" + filme.getNome() + "'?");
+                        System.out.println("1 - Ator/Atriz");
+                        System.out.println("2 - Diretor(a)");
+                        System.out.print("Escolha: ");
+                        int tipo = scanner.nextInt();
+                        scanner.nextLine();
 
-                    //ADICIONAR AQUI LÓGICA DE ASSOCIAR ATOR/ATRIZ/DIRETOR(A) A UM FILME
-
+                        if (tipo == 1) {
+                            System.out.print("Nome do(a) ator/atriz: ");
+                            Ator ator = pessoaService.buscarAtorPorNome(scanner.nextLine());
+                            if (ator != null) {
+                                filmeService.associarAtorAoFilme(filme, ator);
+                            } else {
+                                System.out.println("Ator/Atriz não encontrado(a).");
+                            }
+                        } else if (tipo == 2) {
+                            System.out.print("Nome do(a) diretor(a): ");
+                            Diretor diretor = pessoaService.buscarDiretorPorNome(scanner.nextLine());
+                            if (diretor != null) {
+                                filmeService.associarDiretorAoFilme(filme, diretor);
+                            } else {
+                                System.out.println("Diretor(a) não encontrado(a).");
+                            }
+                        } else {
+                            System.out.println("Opção inválida.");
+                        }
+                    }
 
                     break;
                 }
                 case 0:
-
-                    //lembrar que, pela lógica contida aqui, aplicar "sitemRodando= false" para PARAR
-                    //podem modificar se quiserem, só a título de ilustração
-
-
-
-                    //ADICIONAR AQUI LÓGICA DE SAÍDA DO SISTEMA
-
-
+                    System.out.println("\nEncerrando o programa... Até mais!");
+                default: System.out.println("\nOpção inválida. Tente novamente.");
             }
         }
 
