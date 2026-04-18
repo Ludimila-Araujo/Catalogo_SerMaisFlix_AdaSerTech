@@ -35,4 +35,18 @@ public class FilmeService {
     System.out.println("A associação entre diretor(a) e filme foi feita com sucesso!");
   }
 
+  public void imprimirFichaTecnicaFilme (Filme filme) {
+
+    System.out.println("--- Ficha Técnica do Filme ---");
+    System.out.println("• Nome: " +filme.getNome()+";");
+    System.out.println("• Data de lançamento: " +filme.getDataLancamento()+";");
+    System.out.println("• Diretor(a) atual: " +filme.getDiretor().getNome()+";");
+    System.out.println("• Elenco: ");
+
+    for (Ator ator : filme.getAtores()) {
+      System.out.println("  "+ator.getNome());
+    }
+
+  }
+
 }
