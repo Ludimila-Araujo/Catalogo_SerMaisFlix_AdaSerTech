@@ -31,10 +31,10 @@ public class Main{
 
             System.out.println("\n--- MENU PRINCIPAL ---");
             System.out.println("1 - Cadastrar Filme");
-            System.out.println("2 - Cadastrar Ator/Atriz)");
-            System.out.println("3 - Cadastrar Diretor/Diretora)");
+            System.out.println("2 - Cadastrar Ator/Atriz");
+            System.out.println("3 - Cadastrar Diretor/Diretora");
             System.out.println("4 - Buscar Filme por Nome");
-            System.out.println("5 - Associar ator/atriz, diretor(a) a um filme");
+            System.out.println("5 - Associar Ator/Atriz, Diretor(a) a um Filme");
             System.out.println("0 - Sair do Sistema");
             System.out.print("Escolha uma opção: ");
 
@@ -43,6 +43,7 @@ public class Main{
 
             switch(opcao){
                 case 1: {
+
                     System.out.println("\n--- CADASTRAR FILME ---");
                     System.out.print("Digite o nome do filme: ");
                     String nome = scanner.nextLine();
@@ -68,7 +69,9 @@ public class Main{
                     break;
 
                 }
+
                 case 2: {
+
                     System.out.println("\n--- CADASTRAR ATOR/ATRIZ ---");
 
                     System.out.print("Nome: ");
@@ -98,7 +101,9 @@ public class Main{
 
                     break;
                 }
+
                 case 3: {
+
                     System.out.println("\n--- CADASTRAR DIRETOR(A) ---");
 
                     System.out.print("Nome: ");
@@ -127,19 +132,26 @@ public class Main{
 
                     break;
                 }
+
                 case 4: {
 
+                    System.out.println("\n--- Buscar por filme ---");
 
-                    //ADICIONAR AQUI LÓGICA DE BUSCA DE FILME POR NOME
+                    System.out.print("Digite o nome do filme: ");
+                    String nomeDoFilme = scanner.nextLine();
 
+                    Filme filme = filmeService.buscarFilmePorNome(nomeDoFilme);
 
+                    if (filme != null) {
+                        filmeService.imprimirFichaTecnicaFilme(filme);
+
+                    }
 
                     break;
-
-
                 }
 
                 case 5: {
+
                     System.out.println("\n--- Central de Associações ---");
                     System.out.print("Digite o nome do filme: ");
                     String nomeDoFilme = scanner.nextLine();
@@ -178,7 +190,9 @@ public class Main{
 
                     break;
                 }
+
                 case 0:
+
                     System.out.println("\nEncerrando o programa... Até mais!");
                 default: System.out.println("\nOpção inválida. Tente novamente.");
             }
