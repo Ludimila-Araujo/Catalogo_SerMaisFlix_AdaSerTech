@@ -2,12 +2,17 @@ package model;
 
 import java.time.LocalDate;
 
+/**
+ * Classe "Pessoa" que representa as pessoas do sistema SerMaisFlix, como atores/atrizes e diretores/diretoras.
+ * 
+ * @author Ludimila Araujo
+ */
 public abstract class Pessoa {
 
     //atributos:
 
-    private static  Long idCounter = 1L; //contador estático para "Pessoa"
-    private final Long id; //blindagem do id com o "final"
+    private static  Long idCounter = 1L;
+    private final Long id;
     private String nome;
     private LocalDate dataNascimento;
     private String nacionalidade;
@@ -29,7 +34,7 @@ public abstract class Pessoa {
 
     // não é preciso um setId o ID é gerado automaticamente!
 
-    public String getNome(){
+    public String getNome() {
         return nome;
     }
 
