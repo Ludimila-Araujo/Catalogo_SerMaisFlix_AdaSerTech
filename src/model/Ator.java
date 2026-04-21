@@ -2,6 +2,11 @@ package model;
 
 import java.time.LocalDate;
 
+/**
+ * Classe "Ator" que representa os atores/atrizes do sistema SerMaisFlix.
+ * 
+ * @author Ludimila Araujo
+ */
 public class Ator extends Pessoa {
 
         //atributos da classe-filha "Ator:

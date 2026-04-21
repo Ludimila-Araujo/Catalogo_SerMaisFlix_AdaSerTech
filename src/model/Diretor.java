@@ -2,6 +2,11 @@ package model;
 
 import java.time.LocalDate;
 
+/**
+ * Classe "Diretor" que representa os diretores/diretoras do sistema SerMaisFlix.
+ * 
+ * @author Ludimila Araujo
+ */
 public class Diretor extends Pessoa {
 
         //atributos da classe filha "Diretor":

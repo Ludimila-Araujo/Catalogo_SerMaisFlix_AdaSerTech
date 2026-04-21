@@ -4,6 +4,11 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Classe "Filme" que representa os filmes do sistema SerMaisFlix.
+ * 
+ * @author Enei Pereira
+ */
 public class Filme {
 
     //atributos:
@@ -14,8 +19,10 @@ public class Filme {
     private final LocalDate dataLancamento;
     private final double orcamento;
     private final String descricao;
-    private Diretor diretor;
 
+    //@author Maria Brenda
+    private Diretor diretor;
+    //@author Maria Brenda
     private final List<Ator> atores = new ArrayList<>();
 
     //construtor:
