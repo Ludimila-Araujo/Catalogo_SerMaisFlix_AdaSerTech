@@ -1,52 +1,70 @@
 package service;
 
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
-import model.*;
+import model.Ator;
+import model.Diretor;
+import model.Filme;
 
+/**
+ * Classe "FilmeService" que representa os serviços relacionados aos filmes do
+ * sistema SerMaisFlix, como cadastro, busca e associação de atores e diretores.
+ *
+ * @author Enei Pereira
+ */
 public class FilmeService {
-  private final List<Filme> filmes = new ArrayList<>();
 
-  public void cadastrarFilme(Filme filme) {
-    filmes.add(filme);
-    System.out.println("\nFilme cadastrado com sucesso: " + filme.getNome());
-  }
+    private final List<Filme> filmes = new ArrayList<>();
+    private static final DateTimeFormatter FMT = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
-  public Filme buscarFilmePorNome(String nomeBuscado) {
-    for (Filme filmeAtual : filmes) {
-      if (filmeAtual.getNome().equalsIgnoreCase(nomeBuscado)) {
-        return filmeAtual;
-      }
-    }
-    System.out.println("⚠️ Filme não encontrado no sistema.");
-    return null;
-  }
-
-  public void associarAtorAoFilme(Filme filme, Ator ator) {
-    filme.adicionarAtor(ator);
-
-    System.out.println("A associação entre ator/atriz e filme foi feita com sucesso!");
-
-  }
-
-  public void associarDiretorAoFilme(Filme filme, Diretor diretor) {
-    filme.definirDiretor(diretor);
-
-    System.out.println("A associação entre diretor(a) e filme foi feita com sucesso!");
-  }
-
-  public void imprimirFichaTecnicaFilme (Filme filme) {
-
-    System.out.println("--- Ficha Técnica do Filme ---");
-    System.out.println("• Nome: " +filme.getNome()+";");
-    System.out.println("• Data de lançamento: " +filme.getDataLancamento()+";");
-    System.out.println("• Diretor(a) atual: " +filme.getDiretor().getNome()+";");
-    System.out.println("• Elenco: ");
-
-    for (Ator ator : filme.getAtores()) {
-      System.out.println("  "+ator.getNome());
+    public void cadastrarFilme(Filme filme) {
+        filmes.add(filme);
     }
 
-  }
+    //@author Maria Brenda
+    public Filme buscarFilmePorNome(String nomeBuscado) {
+        for (Filme filmeAtual : filmes) {
+            if (filmeAtual.getNome().equalsIgnoreCase(nomeBuscado)) {
+                return filmeAtual;
+            }
+        }
+        return null;
+    }
+
+    //@author Maria Brenda
+    public void associarAtorAoFilme(Filme filme, Ator ator) {
+        filme.adicionarAtor(ator);
+    }
+
+    //@author Maria Brenda
+    public void associarDiretorAoFilme(Filme filme, Diretor diretor) {
+        filme.definirDiretor(diretor);
+    }
+
+    //@author Maria Brenda
+    public String montarFichaTecnicaFilme(Filme filme) {
+        StringBuilder ficha = new StringBuilder();
+        ficha.append("--- Ficha Técnica do Filme ---\n");
+        ficha.append("• Nome: ").append(filme.getNome()).append("\n");
+        ficha.append("• Data de lançamento: ").append(filme.getDataLancamento().format(FMT)).append("\n");
+        ficha.append(String.format("• Orçamento: R$ %.2f%n", filme.getOrcamento()));
+        ficha.append("• Descrição: ").append(filme.getDescricao()).append("\n");
+        if (filme.getDiretor() != null) {
+            ficha.append("• Diretor(a) atual: ").append(filme.getDiretor().getNome()).append("\n");
+        } else {
+            ficha.append("• Diretor(a) atual: nenhum diretor foi associado a esse filme.\n");
+        }
+
+        ficha.append("• Elenco:\n");
+        if (filme.getAtores().isEmpty()) {
+            ficha.append("  nenhum ator foi associado a esse filme.\n");
+        } else {
+            for (Ator ator : filme.getAtores()) {
+                ficha.append("  ").append(ator.getNome()).append("\n");
+            }
+        }
+        return ficha.toString();
+    }
 
 }
