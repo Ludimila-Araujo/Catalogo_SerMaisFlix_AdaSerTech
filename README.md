@@ -1,9 +1,5 @@
 # 🎬 SerMaisFlix (Catálogo de Filmes)
 
-# Catalago_SerMaisFlix_AdaSerTech
-Projeto desenvolvido como parte do programa Ser + Tech 2026, uma parceria entre as empresas ADA e Núclea.
-
-
 > **Projeto desenvolvido como parte do programa Ser + Tech 2026, uma parceria entre as empresas ADA e Núclea.**
 
 ---
@@ -73,4 +69,3 @@ Este projeto foi arquitetado e desenvolvido em colaboração. O histórico de *c
 | Ludimila Araújo    | Backend Developer / Product Owner | [Ludimila-Araujo](https://github.com/Ludimila-Araujo) | [LinkedIn](https://linkedin.com/in/seu-perfil)         |
 | Enei Pereira       | Backend Developer                 | [Enei Pereira Júnior](https://github.com/eneipereira) | [LinkedIn](https://www.linkedin.com/in/eneipereira)    |
 | Maria Brenda Silva | Backend Developer                 | [MarBrenda](https://github.com/MarBrenda)             | [LinkedIn](https://www.linkedin.com/in/mariabrcsilva/) |
-| Nankin Zane        | Backend Developer                 | [KimZanee](https://github.com/kimzanee)               | [LinkedIn](https://www.linkedin.com/in/nankin-zane)    |
