@@ -50,8 +50,7 @@ public class Main {
                 //@author Enei Pereira
                 case 1: {
                     System.out.println("\n--- CADASTRAR FILME ---\n");
-                    System.out.print("Digite o nome do filme: ");
-                    String nome = scanner.nextLine();
+                    String nome = InputValidator.lerStringNaoVazia(scanner, "Digite o nome do filme: ");
 
                     LocalDate dataLancamento = InputValidator.lerDataValida(
                             scanner,
@@ -60,8 +59,7 @@ public class Main {
                     );
                     double orcamento = InputValidator.lerDoubleValido(scanner, "Digite o orçamento do filme: ");
 
-                    System.out.print("Digite uma breve descrição do filme: ");
-                    String descricao = scanner.nextLine();
+                    String descricao = InputValidator.lerStringNaoVazia(scanner, "Digite uma breve descrição do filme: ");
                     Filme novoFilme = new Filme(nome, dataLancamento, orcamento, descricao);
                     filmeService.cadastrarFilme(novoFilme);
                     System.out.println("\nFilme cadastrado com sucesso: " + novoFilme.getNome());
@@ -72,8 +70,7 @@ public class Main {
                 case 2: {
                     System.out.println("\n--- CADASTRAR ATOR/ATRIZ ---\n");
 
-                    System.out.print("Nome: ");
-                    String nome = scanner.nextLine();
+                    String nome = InputValidator.lerStringNaoVazia(scanner, "Nome: ");
 
                     LocalDate dataNascimento = InputValidator.lerDataValida(
                             scanner,
@@ -81,8 +78,7 @@ public class Main {
                             "Data de nascimento (ex: 5/4/2024 ou 05/04/2024): "
                     );
 
-                    System.out.print("Nacionalidade: ");
-                    String nacionalidade = scanner.nextLine();
+                    String nacionalidade = InputValidator.lerStringNaoVazia(scanner, "Nacionalidade: ");
 
                     double cache = InputValidator.lerDoubleValido(scanner, "Cachê: R$ ");
 
@@ -97,8 +93,7 @@ public class Main {
                 case 3: {
                     System.out.println("\n--- CADASTRAR DIRETOR(A) ---\n");
 
-                    System.out.print("Nome: ");
-                    String nome = scanner.nextLine();
+                    String nome = InputValidator.lerStringNaoVazia(scanner, "Nome: ");
 
                     LocalDate dataNascimento = InputValidator.lerDataValida(
                             scanner,
@@ -106,11 +101,8 @@ public class Main {
                             "Data de nascimento (ex: 5/4/2024 ou 05/04/2024): "
                     );
 
-                    System.out.print("Nacionalidade: ");
-                    String nacionalidade = scanner.nextLine();
-
-                    System.out.print("Estilo: ");
-                    String estilo = scanner.nextLine();
+                    String nacionalidade = InputValidator.lerStringNaoVazia(scanner, "Nacionalidade: ");
+                    String estilo = InputValidator.lerStringNaoVazia(scanner, "Estilo: ");
 
                     Diretor novoDiretor = new Diretor(nome, dataNascimento, nacionalidade, estilo);
 
@@ -122,8 +114,7 @@ public class Main {
                 //@author Maria Brenda
                 case 4: {
                     System.out.println("\n--- Central de Associações ---\n");
-                    System.out.print("Digite o nome do filme: ");
-                    String nomeDoFilme = scanner.nextLine();
+                    String nomeDoFilme = InputValidator.lerStringNaoVazia(scanner, "Digite o nome do filme: ");
                     Filme filme = filmeService.buscarFilmePorNome(nomeDoFilme);
 
                     if (filme == null) {
@@ -138,8 +129,17 @@ public class Main {
 
                     switch (tipo) {
                         case 1: {
-                            System.out.print("Nome do(a) ator/atriz: ");
-                            Ator ator = pessoaService.buscarAtorPorNome(scanner.nextLine());
+                            System.out.println("\n--- Atores/Atrizes Disponíveis ---\n");
+                            if (pessoaService.listarAtores().isEmpty()) {
+                                System.out.println("Nenhum ator/atriz cadastrado(a) no sistema.");
+                                break;
+                            } else {
+                                for (Ator a : pessoaService.listarAtores()) {
+                                    System.out.println("- " + a.getNome());
+                                }
+                            }
+
+                            Ator ator = pessoaService.buscarAtorPorNome(InputValidator.lerStringNaoVazia(scanner, "\nNome do(a) ator/atriz: "));
                             if (ator != null) {
                                 filmeService.associarAtorAoFilme(filme, ator);
                                 System.out.println("\nA associação entre ator/atriz e filme foi feita com sucesso!");
@@ -149,8 +149,17 @@ public class Main {
                             break;
                         }
                         case 2: {
-                            System.out.print("Nome do(a) diretor(a): ");
-                            Diretor diretor = pessoaService.buscarDiretorPorNome(scanner.nextLine());
+                            System.out.println("\n--- Diretores(as) Disponíveis ---\n");
+                            if (pessoaService.listarDiretores().isEmpty()) {
+                                System.out.println("Nenhum(a) diretor(a) cadastrado(a) no sistema.");
+                                break;
+                            } else {
+                                for (Diretor d : pessoaService.listarDiretores()) {
+                                    System.out.println("- " + d.getNome());
+                                }
+                            }
+
+                            Diretor diretor = pessoaService.buscarDiretorPorNome(InputValidator.lerStringNaoVazia(scanner, "\nNome do(a) diretor(a): "));
                             if (diretor != null) {
                                 filmeService.associarDiretorAoFilme(filme, diretor);
                                 System.out.println("\nA associação entre diretor(a) e filme foi feita com sucesso!");
@@ -170,8 +179,7 @@ public class Main {
                 //@author Maria Brenda
                 case 5: {
                     System.out.println("\n--- BUSCAR FILME POR NOME ---");
-                    System.out.print("Digite o nome do filme a buscar: ");
-                    String nomeBuscado = scanner.nextLine();
+                    String nomeBuscado = InputValidator.lerStringNaoVazia(scanner, "Digite o nome do filme a buscar: ");
 
                     Filme filmeBuscado = filmeService.buscarFilmePorNome(nomeBuscado);
                     if (filmeBuscado != null) {
