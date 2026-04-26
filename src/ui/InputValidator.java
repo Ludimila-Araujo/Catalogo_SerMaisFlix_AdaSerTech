@@ -61,4 +61,15 @@ public final class InputValidator {
             }
         }
     }
+
+    public static String lerStringNaoVazia(Scanner scanner, String mensagemPrompt) {
+        while (true) {
+            System.out.print(mensagemPrompt);
+            String texto = scanner.nextLine().trim();
+            if (!texto.isEmpty()) {
+                return texto;
+            }
+            System.out.println("Entrada invalida! O valor não pode ficar em branco.");
+        }
+    }
 }
