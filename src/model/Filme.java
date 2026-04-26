@@ -6,7 +6,7 @@ import java.util.List;
 
 /**
  * Classe "Filme" que representa os filmes do sistema SerMaisFlix.
- * 
+ *
  * @author Enei Pereira
  */
 public class Filme {
@@ -26,8 +26,7 @@ public class Filme {
     private final List<Ator> atores = new ArrayList<>();
 
     //construtor:
-
-    public Filme (String nome, LocalDate dataLancamento, double orcamento, String descricao) {
+    public Filme(String nome, LocalDate dataLancamento, double orcamento, String descricao) {
         this.id = idCounter++;
         this.nome = nome;
         this.dataLancamento = dataLancamento;
@@ -37,7 +36,6 @@ public class Filme {
     }
 
     //getters e setters:
-
     public Long getId() {
         return id;
     }
@@ -67,19 +65,18 @@ public class Filme {
     }
 
     //métodos: métodos visualizados dentro do diagrama UML
-
-    public void definirDiretor(Diretor diretor){
+    public void definirDiretor(Diretor diretor) {
         this.diretor = diretor;
     }
 
-    public void adicionarAtor(Ator ator){
+    public void adicionarAtor(Ator ator) {
         this.atores.add(ator);
     }
 
     @Override
     public String toString() {
         String nomeDir = (diretor != null) ? diretor.getNome() : "N/A";
-        return String.format("[ID %d] %s (%s)\n   Diretor: %s | Elenco: %d atores\n   Resumo: %s", 
+        return String.format("[ID %d] %s (%s)\n   Diretor: %s | Elenco: %d atores\n   Resumo: %s",
                 id, nome, dataLancamento, nomeDir, atores.size(), descricao);
     }
 }
