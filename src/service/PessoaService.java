@@ -29,8 +29,11 @@ public class PessoaService {
 
     //@author Maria Brenda
     public Ator buscarAtorPorNome(String nomeBuscado) {
+        if (nomeBuscado == null || nomeBuscado.trim().isEmpty()) {
+            return null;
+        }
         for (Ator atorAtual : atores) {
-            if (atorAtual.getNome().equalsIgnoreCase(nomeBuscado)) {
+            if (atorAtual.getNome().toLowerCase().contains(nomeBuscado.toLowerCase())) {
                 return atorAtual;
             }
         }
@@ -39,12 +42,23 @@ public class PessoaService {
 
     //@author Maria Brenda
     public Diretor buscarDiretorPorNome(String nomeBuscado) {
+        if (nomeBuscado == null || nomeBuscado.trim().isEmpty()) {
+            return null;
+        }
         for (Diretor diretorAtual : diretores) {
-            if (diretorAtual.getNome().equalsIgnoreCase(nomeBuscado)) {
+            if (diretorAtual.getNome().toLowerCase().contains(nomeBuscado.toLowerCase())) {
                 return diretorAtual;
             }
         }
         return null;
+    }
+
+    public List<Ator> listarAtores() {
+        return atores;
+    }
+
+    public List<Diretor> listarDiretores() {
+        return diretores;
     }
 
 }

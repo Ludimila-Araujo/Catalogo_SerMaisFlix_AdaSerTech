@@ -24,8 +24,11 @@ public class FilmeService {
 
     //@author Maria Brenda
     public Filme buscarFilmePorNome(String nomeBuscado) {
+        if (nomeBuscado == null || nomeBuscado.trim().isEmpty()) {
+            return null;
+        }
         for (Filme filmeAtual : filmes) {
-            if (filmeAtual.getNome().equalsIgnoreCase(nomeBuscado)) {
+            if (filmeAtual.getNome().toLowerCase().contains(nomeBuscado.toLowerCase())) {
                 return filmeAtual;
             }
         }
